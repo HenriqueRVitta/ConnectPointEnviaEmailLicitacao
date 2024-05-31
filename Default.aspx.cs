@@ -36,11 +36,13 @@ namespace EnviaEmailLicitacoes
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            // Obtenho Hora e minuto de Brasília
             string HoraAtual_ = HrBrasilia().ToString("HH") + HrBrasilia().ToString("mm");
             int HoraAtual = Int32.Parse(HoraAtual_);
 
             bool executa = false;
 
+            // Obtenho o DateTime de Brasília
             HoraAtualView.Text = HrBrasilia().ToString();
 
             // EXECUTA SEMPRE ENTRE 14:00h e 14:30h
