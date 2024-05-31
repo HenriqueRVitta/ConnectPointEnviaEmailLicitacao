@@ -35,11 +35,13 @@ namespace EnviaEmailLicitacoes
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            string HoraAtual_ = DateTime.Now.ToString("HH") + DateTime.Now.ToString("mm");
+
+            string HoraAtual_ = HrBrasilia().ToString("HH") + HrBrasilia().ToString("mm");
             int HoraAtual = Int32.Parse(HoraAtual_);
 
             bool executa = false;
+
+            HoraAtualView.Text = HrBrasilia().ToString();
 
             // EXECUTA SEMPRE ENTRE 14:00h e 14:30h
             if (HoraAtual >= 1400 && HoraAtual <= 1440)
@@ -54,8 +56,7 @@ namespace EnviaEmailLicitacoes
             if (!executa)
                 return;
 
-
-            TotalGeralLicitacoes.Text = "";
+                TotalGeralLicitacoes.Text = "";
                 TotalEnviados.Text = "";
                 ListaEmails.InnerText = "";
                 fimProcesso.Visible = false;
@@ -371,7 +372,15 @@ namespace EnviaEmailLicitacoes
 
                 }
 
-        }
+            }
+
+            public DateTime HrBrasilia()
+            {
+                DateTime dateTime = DateTime.UtcNow;
+                TimeZoneInfo hrBrasilia = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+                return TimeZoneInfo.ConvertTimeFromUtc(dateTime, hrBrasilia);
+            }
+
     }
 
 }

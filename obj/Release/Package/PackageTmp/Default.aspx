@@ -7,7 +7,9 @@
             <h1 id="aspnetTitle">ConnectPoint</h1>
             <p class="lead">Rotina de envio de e-mail's de licitações conforme configurado Área, Classificação e Modalidade.</p>
             <p class="lead">Período de Execução: Todos os dias entre 14:00 e 14:40h</p>
-            <p class="lead">Hora Atual: <%=DateTime.Now.ToString() %></p>
+            <p class="lead">Hora Atual:
+            <asp:label runat="server" ID="HoraAtualView" style="font-size: 16px; color:red;"></asp:label>
+            </p>
         </section>
 
         <div class="row">
